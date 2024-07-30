@@ -18,22 +18,20 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 #  DEALINGS IN THE SOFTWARE.
 
-# from itertools import izip
-from random import normalvariate, random
-from datetime import timedelta, datetime
-
 import csv
-import dateutil.parser
-import os.path
-
-import operator
-import json
-import re
-import threading
-
 # from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 import http.server
+import json
+import operator
+import os.path
+import re
+import threading
+from datetime import timedelta, datetime
+# from itertools import izip
+from random import normalvariate, random
 from socketserver import ThreadingMixIn
+
+import dateutil.parser
 
 ################################################################################
 #
@@ -160,7 +158,8 @@ def generate_csv():
 
 def read_csv():
     """ Read a CSV or order history into a list. """
-    with open('test.csv', 'rt') as f:
+    test = 'E:/Microsoft VS Projects/Job Simulations/forage-jpmc-swe-task-1/test.csv'
+    with open(test, 'rt') as f:
         for time, stock, side, order, size in csv.reader(f):
             yield dateutil.parser.parse(time), stock, side, float(order), int(size)
 
